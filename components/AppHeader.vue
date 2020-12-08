@@ -1,15 +1,10 @@
 <template lang="html">
   <div>
-    <v-card class="overflow-hidden">
-      <v-app-bar absolute color="#fff" elevate-on-scroll scroll-target="#scrolling-techniques-7">
-        <!--
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar app color="#fff" elevate-on-scroll scroll-target="#main-carousel">
 
-        <v-toolbar-title>Title</v-toolbar-title>
-        -->
         <img src="~/assets/img/logo.png" class="my-mr" />
 
-        <v-hover v-slot="{ hover } " v-for="(link, index) in linkTitles" :key="index">
+        <v-hover v-show="!isSmallDevice" v-slot="{ hover } " v-for="(link, index) in linkTitles" :key="index">
           <v-btn text
            class="text-uppercase"
            :color="hover ? '#6f42c1' : 'black'"
@@ -29,8 +24,9 @@
           <p>{{ chartCount }}</p>
         </v-btn>
 
+        <v-app-bar-nav-icon v-show="isSmallDevice"></v-app-bar-nav-icon>
+
       </v-app-bar>
-    </v-card>
   </div>
 </template>
 
@@ -38,8 +34,26 @@
 export default {
   data: () => ({
     linkTitles: ['home', 'shop', 'about', 'contact'],
-    chartCount: 0
-  })
+    chartCount: 0,
+    isSmallDevice: false
+  }),
+  mounted() {
+    this.onResize()
+
+    window.addEventListener('resize', this.onResize, {passive: true})
+  },
+
+  methods: {
+    onResize() {
+      var breakpointWidth = window.innerWidth
+
+      if (breakpointWidth  > 900) {
+        this.isSmallDevice = false
+      } else {
+        this.isSmallDevice = true
+      }
+    }
+  }
 }
 </script>
 
