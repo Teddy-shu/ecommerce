@@ -45,6 +45,8 @@
       </v-btn>
     </div>
 
+    <ConsumptionPolicy />
+
   </div>
 </template>
 
