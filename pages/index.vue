@@ -38,6 +38,12 @@
       <h1>arrival</h1>
     </div>
 
+    <v-row>
+      <v-col cols="auto" class="center-card" v-for="(goods,index) in goodsData" :key="index">
+        <Goods :goodsDataPayload="goods" :imgSrc=" '/goods/' + goods.id + '.png' "/>
+      </v-col>
+    </v-row>
+
     <div class="about-zone">
       <h1 class="text-uppercase">collection houses <br /> our first-ever</h1>
       <v-btn depressed dark x-large color="#9F78FF" class="rounded-pill">
@@ -57,8 +63,34 @@ export default {
       '/img/arnel-hasanovic-Nl-SXO4FAHw-unsplash.jpg',
       '/img/annie-spratt-CQ2YvMAN7zE-unsplash.jpg',
       '/img/erin-east-14YmL-R6MCc-unsplash.jpg'
-    ]
-  })
+    ],
+    extend: 12
+  }),
+  async asyncData({ $axios }) {
+    const goodsData = await $axios.$get('/m/newArrive')
+    return { goodsData }
+  },
+  mounted() {
+    this.onResize()
+
+    window.addEventListener('resize', this.onResize, {passive: true})
+  },
+
+  methods: {
+    onResize() {
+      var breakpointWidth = window.innerWidth
+
+      if (breakpointWidth  > 1264) {
+        this.extend = 3
+      }
+      if (breakpointWidth < 1264 && breakpointWidth > 600) {
+        this.extend = 6
+      }
+      if (breakpointWidth < 600) {
+        this.extend = 12
+      }
+    }
+  }
 }
 </script>
 
@@ -130,5 +162,8 @@ export default {
   color: white;
   text-transform: uppercase;
   margin-bottom: 1rem;
+}
+.center-card {
+  margin: auto auto;
 }
 </style>
