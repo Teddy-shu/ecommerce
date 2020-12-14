@@ -23,7 +23,7 @@
        <h1>fashion</h1>
        <h1>changing</h1>
        <h1>always</h1>
-       <v-btn depressed dark x-large color="#9F78FF" class="rounded-pill">
+       <v-btn to="/shop" depressed dark x-large color="#9F78FF" class="rounded-pill">
          <p>Shop Now</p>
        </v-btn>
      </div>
@@ -32,7 +32,8 @@
     <div class="absolute-spacing"></div>
 
     <CategoryCards />
-
+    <GoodsList typeName='new-arrive' title="new arrive"/>
+    <!--
     <div class="title-zone">
       <h1>new</h1>
       <h1>arrival</h1>
@@ -43,10 +44,10 @@
         <Goods :goodsDataPayload="goods" :imgSrc=" '/goods/' + goods.id + '.png' "/>
       </v-col>
     </v-row>
-
+    -->
     <div class="about-zone">
       <h1 class="text-uppercase">collection houses <br /> our first-ever</h1>
-      <v-btn depressed dark x-large color="#9F78FF" class="rounded-pill">
+      <v-btn to="/about" depressed dark x-large color="#9F78FF" class="rounded-pill">
         <p>About Us</p>
       </v-btn>
     </div>
@@ -66,10 +67,12 @@ export default {
     ],
     extend: 12
   }),
+  /*
   async asyncData({ $axios }) {
     const goodsData = await $axios.$get('/m/newArrive')
     return { goodsData }
   },
+  */
   mounted() {
     this.onResize()
 
@@ -163,7 +166,9 @@ export default {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+/*
 .center-card {
   margin: auto auto;
 }
+*/
 </style>

@@ -5,12 +5,14 @@
         <img src="~/assets/img/logo.png" class="my-mr" />
 
         <v-hover v-show="!isSmallDevice" v-slot="{ hover } " v-for="(link, index) in linkTitles" :key="index">
-          <v-btn text
-           class="text-uppercase"
-           :color="hover ? '#6f42c1' : 'black'"
-          >
-            {{ link }}
-          </v-btn>
+          <nuxt-link :to="linkHrefs[index]">
+            <v-btn text
+            class="text-uppercase"
+            :color="hover ? '#6f42c1' : 'black'"
+            >
+              {{ link }}
+            </v-btn>
+          </nuxt-link>
         </v-hover>
 
         <v-spacer></v-spacer>
@@ -34,6 +36,7 @@
 export default {
   data: () => ({
     linkTitles: ['home', 'shop', 'about', 'contact'],
+    linkHrefs: ['/','/shop','/about','/contact'],
     chartCount: 0,
     isSmallDevice: false
   }),

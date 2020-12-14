@@ -9,14 +9,14 @@
     </v-img>
 
     <v-card-title class="justify-center text-big border-top">
-      <a :href="goodsData.id">
+      <nuxt-link :to="'products/' + goodsData.id">
         {{ goodsData.name }}
-      </a>
-   </v-card-title>
+      </nuxt-link>
+    </v-card-title>
 
-   <v-card-subtitle class="justify-center text-md">
-     {{ '$ ' + goodsData.price }}
-   </v-card-subtitle>
+    <v-card-subtitle class="justify-center text-md">
+      {{ '$ ' + goodsData.price }}
+    </v-card-subtitle>
 
   </v-card>
 </template>
