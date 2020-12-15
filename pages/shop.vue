@@ -1,8 +1,8 @@
 <template lang="html">
   <div>
-    <div v-for="(item, index) in typeNames" :key="index">
+    <div v-for="(item, index) in titles" :key="index">
       <div class="absolute-spacing"></div>
-      <GoodsList :typeName="item" :title="titles[index]" />
+      <GoodsList :title="item" />
     </div>
     <!--
     <div class="absolute-spacing"></div>
@@ -27,7 +27,6 @@
 export default {
   data() {
     return {
-      typeNames: ['new-arrive', 'type-cosmetic', 'type-lipstick', 'type-perfume', 'type-accessories'],
       titles: ['new arrive', 'cosmetic', 'lipstick', 'perfume', 'accessories']
     }
   }

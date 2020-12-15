@@ -9,7 +9,7 @@
               <div class="card-title" v-show="hover">
                 {{ Category.title }}
               </div>
-              <v-btn v-show="hover" depressed dark x-large color="#9F78FF" class="rounded-pill center-card-btn">
+              <v-btn :to="Category.linkTo" v-show="hover" depressed dark x-large color="#9F78FF" class="rounded-pill center-card-btn">
                 <p>Shop Now</p>
               </v-btn>
 
@@ -26,19 +26,23 @@ export default {
   data: () => ({
     CategoryData: [{
         imgSrc: '/img/category-cosmetic.jpg',
-        title: 'cosmetic'
+        title: 'cosmetic',
+        linkTo: '/products?type=cosmetic'
       },
       {
         imgSrc: '/img/category-lipstick.jpg',
-        title: 'lipstick'
+        title: 'lipstick',
+        linkTo: '/products?type=lipstick'
       },
       {
         imgSrc: '/img/category-perfume.jpg',
-        title: 'perfume'
+        title: 'perfume',
+        linkTo: '/products?type=perfume'
       },
       {
         imgSrc: '/img/category-accessories.jpg',
-        title: 'accessories'
+        title: 'accessories',
+        linkTo: '/products?type=accessories'
       }
     ],
     extend: 12

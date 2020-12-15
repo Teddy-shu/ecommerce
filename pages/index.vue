@@ -32,7 +32,7 @@
     <div class="absolute-spacing"></div>
 
     <CategoryCards />
-    <GoodsList typeName='new-arrive' title="new arrive"/>
+    <GoodsList title="new arrive"/>
     <!--
     <div class="title-zone">
       <h1>new</h1>

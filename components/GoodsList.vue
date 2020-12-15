@@ -24,8 +24,8 @@ export default {
     }
   },
   props: {
-    typeName: String,
-    title: String
+    title: String,
+    isAll: Boolean
   },
   async created() {
     try {
@@ -39,20 +39,32 @@ export default {
   },
   methods: {
     getLinkPath: function() {
-      switch (this.typeName) {
-        case 'new-arrive':
-          return '/m/newArrive'
-        case 'type-cosmetic':
-          return '/m/productsFromType?type=cosmetic&quantity=8'
-        case 'type-lipstick':
-          return '/m/productsFromType?type=lipstick&quantity=8'
-        case 'type-perfume':
-          return '/m/productsFromType?type=perfume&quantity=8'
-        case 'type-accessories':
-          return '/m/productsFromType?type=accessories&quantity=8'
+      var link
+      switch (this.title) {
+        case 'new arrive':
+          link = '/m/newArrive'
+          break;
+        case 'cosmetic':
+          link = '/m/productsFromType?type=cosmetic'
+          break;
+        case 'lipstick':
+          link = '/m/productsFromType?type=lipstick'
+          break;
+        case 'perfume':
+          link = '/m/productsFromType?type=perfume'
+          break;
+        case 'accessories':
+          link = '/m/productsFromType?type=accessories'
+          break;
         default:
-          return '/m/newArrive'
+          link = '/m/newArrive'
+          break;
       }
+
+      if(!this.isAll && link !== '/m/newArrive') {
+        link = link + '&quantity=8'
+      }
+      return link
     }
   }
 }
