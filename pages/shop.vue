@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="overflow-hidden">
     <div v-for="(item, index) in titles" :key="index">
       <div class="absolute-spacing"></div>
       <GoodsList :title="item" />

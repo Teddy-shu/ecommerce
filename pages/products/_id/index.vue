@@ -9,7 +9,7 @@
         <p>{{ productData.name }}</p>
         <p>{{ productData.describe }}</p>
         <p>{{ '$ ' + productData.price }}</p>
-        <form id="addToChart" @submit.prevent="checkForm">
+        <form id="addToCart" @submit.prevent="sendForm">
           <label>數量</label>
           <select class="border" name="amount" id="amount" v-model="selected">
             <option label="Please select one" disabled value="">Please select one</option>
@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
@@ -58,10 +60,21 @@ export default {
     }
   },
   methods: {
-    checkForm: function() {
-      if(this.selected) {
+    ...mapActions([
+      'prepareMutateCounter'
+    ]),
+    sendForm: function() {
+      if(this.selected > 0) {
         this.formError = false
-        console.log(this.selected)
+
+        var rawData = {
+          id: this.productData._id,
+          name: this.productData.name,
+          price: this.productData.price,
+          quantity: this.selected
+        }
+
+        this.prepareMutateCounter(rawData)
       } else {
         this.formError = true
       }

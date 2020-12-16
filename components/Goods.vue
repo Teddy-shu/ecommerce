@@ -1,7 +1,7 @@
 <template lang="html">
   <v-card max-width="250">
 
-    <v-btn small absolute right fab><v-icon color="gray">mdi-cart-plus</v-icon></v-btn>
+    <v-btn @click="prepareMutateCounter(setCookieData())" small absolute right fab><v-icon color="gray">mdi-cart-plus</v-icon></v-btn>
 
     <v-img
       :src="imgSrc"
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Goods',
   props: {
@@ -31,6 +33,16 @@ export default {
   data: function () {
     return {
       goodsData: this.goodsDataPayload
+    }
+  },
+  methods: {
+    ...mapActions([
+      'prepareMutateCounter'
+    ]),
+    setCookieData: function() {
+      var rawData = {...this.goodsData}
+      rawData.quantity = 1
+      return {...rawData}
     }
   }
 }

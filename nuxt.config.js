@@ -38,7 +38,9 @@ export default {
 
     '@nuxtjs/dotenv',
 
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+
+    'cookie-universal-nuxt'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
