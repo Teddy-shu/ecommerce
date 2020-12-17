@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div >
     <v-dialog
       v-model="dialog"
       persistent
-      max-width="290"
+      scrollable
+      max-width="350"
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn depressed dark rounded color="#9F78FF"
@@ -16,24 +17,24 @@
       </template>
       <v-card>
         <v-card-title class="headline">
-          Use Google's location service?
+          購物車
         </v-card-title>
-        <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
+
+        <CartDialogItem v-for="(item, index) in getCartList" :key="index"
+          :itemData="item"
+        />
+
         <v-card-actions>
+          <P>
+            {{ '共 $ ' +  getTotal }}
+          </P>
           <v-spacer></v-spacer>
           <v-btn
             color="green darken-1"
             text
             @click="dialog = false"
           >
-            Disagree
-          </v-btn>
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Agree
+            Close
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -42,7 +43,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -52,8 +53,15 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getCartCounter'
+      'getCartCounter',
+      'getCartList',
+      'getTotal'
     ])
+  },
+  methods: {
+    ...mapActions([
+      'prepareMutateCounter'
+    ]),
   }
 }
 </script>
@@ -62,4 +70,10 @@ export default {
 .row {
   flex: auto !important;
 }
+/*
+.v-overlay, .v-dialog {
+  display: fixed !important;
+  position: absolute !important;
+}
+*/
 </style>

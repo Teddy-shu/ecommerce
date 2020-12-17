@@ -32,13 +32,13 @@
           <p>{{ chartCount }}</p>
         </v-btn>
       -->
-        <v-app-bar-nav-icon class="float-right" v-show="isSmallDevice" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon class="float-right" v-show="isSmallDevice" @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       </v-app-bar>
       //*** navigation-drawer ***//
       <v-navigation-drawer
       v-model="drawer"
-      absolute
+      fixed
       bottom
       temporary
       >
@@ -83,7 +83,20 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-      //*** dialog ***//
+      //*** scroll top btn ***//
+      <v-btn
+            v-scroll="onScroll"
+            v-show="fab"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="#8E81CE"
+            @click="toTop"
+          >
+            <v-icon large>mdi-arrow-up-bold-circle</v-icon>
+          </v-btn>
 
   </div>
 </template>
@@ -95,7 +108,8 @@ export default {
     linkHrefs: ['/','/shop','/about','/contact'],
     isSmallDevice: false,
     drawer: false,
-    group: null
+    group: null,
+    fab: false
   }),
   mounted() {
     this.onResize()
@@ -112,7 +126,15 @@ export default {
       } else {
         this.isSmallDevice = true
       }
-    }
+    },
+    onScroll (e) {
+     if (typeof window === 'undefined') return
+     const top = window.pageYOffset ||   e.target.scrollTop || 0
+     this.fab = top > 100
+   },
+   toTop () {
+     this.$vuetify.goTo(0)
+   }
   }
 }
 </script>

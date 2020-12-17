@@ -23,7 +23,7 @@
        <h1>fashion</h1>
        <h1>changing</h1>
        <h1>always</h1>
-       <v-btn to="/shop" depressed dark x-large color="#9F78FF" class="rounded-pill">
+       <v-btn to="/shop" depressed dark x-large color="#9F78FF" class="rounded-pill margin-top-rem">
          <p>Shop Now</p>
        </v-btn>
      </div>
@@ -105,6 +105,9 @@ export default {
 .justify-center {
   margin: 0 auto;
 }
+.margin-top-rem {
+  margin-top: 1rem;
+}
 .carousel-img {
   max-width:100%;
   height:auto;
@@ -115,7 +118,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  max-width: 50vw;
+  max-width: 70vw;
   max-height: 50vh;
 }
 .text-zone h1 {
@@ -135,10 +138,13 @@ export default {
   width: 100vw;
   height: fit-content;
   text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .title-zone h1 {
   line-height: 0.8;
-  font-size: 70px;
+  font-size: 6vw;
   font-weight: 600;
   font-family: "Cinzel",serif;
   color: #140C40;
@@ -165,6 +171,15 @@ export default {
   color: white;
   text-transform: uppercase;
   margin-bottom: 1rem;
+}
+@media (min-height: 680px) {
+  .text-zone h1 {
+    font-size: 12vw;
+    line-height: 13vw;
+  }
+  .title-zone h1 {
+    font-size: 10vw;
+  }
 }
 /*
 .center-card {

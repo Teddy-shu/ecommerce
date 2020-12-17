@@ -2,19 +2,17 @@
   <v-container fluid>
     <v-row>
       <v-col :cols="extend" v-for="(Category, index) in CategoryData" :key="index">
-        <v-hover v-slot="{ hover }">
-        <v-card tile flat elevation="0" class="pa-0" height="fit-content">
+        <v-card tile flat elevation="0" class="pa-0 show-on-hover-parent" height="fit-content">
           <img tile :src="Category.imgSrc" width="100%" height="auto"/>
 
-              <div class="card-title" v-show="hover">
+              <div class="card-title show-on-hover">
                 {{ Category.title }}
               </div>
-              <v-btn :to="Category.linkTo" v-show="hover" depressed dark x-large color="#9F78FF" class="rounded-pill center-card-btn">
+              <v-btn :to="Category.linkTo" depressed dark x-large color="#9F78FF" class="rounded-pill center-card-btn show-on-hover">
                 <p>Shop Now</p>
               </v-btn>
 
         </v-card>
-        </v-hover>
       </v-col>
     </v-row>
   </v-container>
@@ -90,4 +88,23 @@ export default {
   left: 50%;
   transform: translate(-50%,-50%);
 }
+.center-card-btn p {
+}
+.show-on-hover {
+  display: none;
+}
+.show-on-hover-parent:hover .show-on-hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (hover: none) and (pointer: coarse){
+  .show-on-hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 </style>
