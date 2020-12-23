@@ -50,6 +50,10 @@ export default {
   build: {},
 
   axios: {
-    baseURL: 'http://localhost:5000', // Used as fallback if no runtime config is provided
-  }
+    baseURL: 'http://localhost:5000/api', // Used as fallback if no runtime config is provided
+  },
+
+  serverMiddleware: [
+    { path: "/api", handler: "~/api/index.js" },
+  ],
 }

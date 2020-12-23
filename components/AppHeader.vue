@@ -1,7 +1,7 @@
 <template lang="html">
   <div data-app>
       //*** app-bar ***//
-      <v-app-bar app class="overflow-hidden" color="#fff" elevate-on-scroll scroll-target="#main-carousel">
+      <v-app-bar app class="overflow-hidden" color="#fff" >
 
         <img src="~/assets/img/logo.png" />
 

@@ -11,6 +11,8 @@
   "dependencies": {
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "mongodb": "^3.6.3",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {
